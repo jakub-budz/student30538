@@ -616,15 +616,18 @@ Going back to our prior temperature plot for New York and Seattle, it can iterat
 tempMinMax = alt.Chart().mark_area(opacity=0.3).encode(
   alt.X('month(date):T', title=None, axis=alt.Axis(format='%b')),
   alt.Y('average(temp_max):Q', title='Avg. Temperature (°C)'),
-  alt.Y2('average(temp_min):Q')
+  alt.Y2('average(temp_min):Q'),
+  alt.Color('location:N')
 )
+
 
 # and the lack of data in this chart as well!
 tempMid = alt.Chart().mark_line().transform_calculate(
   temp_mid='(+datum.temp_min + +datum.temp_max) / 2'
 ).encode(
   alt.X('month(date):T'),
-  alt.Y('average(temp_mid):Q')
+  alt.Y('average(temp_mid):Q'),
+  alt.Color('location:N')
 )
 
 
